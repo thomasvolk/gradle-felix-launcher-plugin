@@ -1,0 +1,15 @@
+.gradle
+.settings
+.project
+.classpath
+*.idea
+*.ipr
+*.iws
+*.iml
+build
+src/integTest/resources/felixProjects/*/*.iml
+src/integTest/resources/felixProjects/*/.settings
+src/integTest/resources/felixProjects/*/.project
+src/integTest/resources/felixProjects/*/.classpath
+src/integTest/resources/felixProjects/*/.gradle
+src/integTest/resources/felixProjects/*/build

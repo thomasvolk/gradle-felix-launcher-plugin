@@ -1,0 +1,24 @@
+apply plugin: 'groovy'
+apply plugin: 'maven'
+
+group = 'de.thomasvolk.gradle'
+version = '1.0-SNAPSHOT'
+archivesBaseName = 'felixLauncher'
+
+repositories {
+  mavenLocal()
+  mavenCentral()
+}
+
+dependencies {
+    compile gradleApi()
+    groovy localGroovy()
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: uri('build/repo'))
+        }
+    }
+}
