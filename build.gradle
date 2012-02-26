@@ -3,7 +3,7 @@ apply plugin: 'maven'
 
 group = 'de.thomasvolk.gradle'
 version = '1.0-SNAPSHOT'
-archivesBaseName = 'felixLauncher'
+archivesBaseName = 'felix'
 
 repositories {
   mavenLocal()

@@ -5,20 +5,35 @@ import org.gradle.api.tasks.TaskAction
 import java.io.FileWriter
 import java.io.File
 
-class LauncherTask extends DefaultTask {	
+class LauncherTask extends DefaultTask {
+
+    
+    def bundleProjects(rootProject) {
+        rootProject.subprojects.findAll { project -> project.name != name }
+    }	
+    
+    def copySubprojects(rootProject, target) {
+        bundleProjects(rootProject).each { project ->
+            ant.copy(file: "${project.name}/build/libs/${project.name}-${project.version}.jar",
+                todir: "$target")
+        }
+    }
+
 
     @TaskAction
     def build() {
         println "build launcher"
-        deps = project.configurations.felix.dependencies.collect { new Artifact(it).jar() }
-        
+        bundles = project.configurations.felix.dependencies.collect { new Artifact(it).jar() }
+        felixMain = project.configurations.felixMain.dependencies.collect { new Artifact(it).jar() }
         target = "${project.buildDir}/launchpad"
         bundleDir = "$target/bundle"
         project.configurations.felixMain.each {
-           ant.copy(file: it.path, todir: "$target/bin")
+            if(felixMain.contains(it.name)) {
+                ant.copy(file: it.path, todir: "$target/bin")
+            }
         }
         project.configurations.felix.each {
-            if(deps.contains(it.name)) {
+            if(bundles.contains(it.name)) {
                 ant.copy(file: it.path, todir: bundleDir)
             }
         }
@@ -27,8 +42,6 @@ class LauncherTask extends DefaultTask {
         new File("$confDir/config.properties").withWriter { w ->
           w.write(Felix.CONFIG_TEMPLATE)
         }
-        
-        
-        
+        copySubprojects(project, bundleDir)
     }
 }

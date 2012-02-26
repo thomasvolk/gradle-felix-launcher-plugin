@@ -1,0 +1,12 @@
+apply plugin: 'java'
+
+jar {
+    manifest {
+        version = version
+        name = name
+        instruction 'Bundle-Activator', 'de.thomasvolk.felix.hello.Activator'
+        instruction 'Import-Package', '*'
+        instruction 'Export-Package', '*'
+        attributes( 'Built-By': gradle.gradleVersion )
+    }
+}

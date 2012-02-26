@@ -17,8 +17,8 @@ class FelixLauncherPlugin implements Plugin<Project> {
     	project.dependencies {      
           felixMain 'org.apache.felix:org.apache.felix.main:4.0.2'
         }
-        project.task('buildLauncher', type: LauncherTask)
-        project.buildLauncher.dependsOn { project.build }
+        project.task('launchpad', type: LauncherTask)
+        project.launchpad.dependsOn { project.build }
     }
 }
 
