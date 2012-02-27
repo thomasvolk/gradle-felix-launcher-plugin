@@ -24,6 +24,7 @@ class FelixPlugin implements Plugin<Project> {
           project.build
           project.subprojects.build
         }
+        project.task('runFelix', type: RunFelixTask, dependsOn: ':launchpad')
     }
 }
 
