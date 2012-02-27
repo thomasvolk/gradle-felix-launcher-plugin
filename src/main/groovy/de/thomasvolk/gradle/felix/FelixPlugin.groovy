@@ -2,9 +2,11 @@ package de.thomasvolk.gradle.felix
 
 import org.gradle.api.Project
 import org.gradle.api.Plugin
+import org.gradle.api.plugins.JavaPlugin
 
-class FelixLauncherPlugin implements Plugin<Project> {
+class FelixPlugin implements Plugin<Project> {
     void apply(Project project) {
+        project.plugins.apply(JavaPlugin.class)
     	project.extensions.felix = new FelixPluginExtension()
     	project.repositories {
            mavenLocal()
@@ -17,7 +19,7 @@ class FelixLauncherPlugin implements Plugin<Project> {
     	project.dependencies {      
           felixMain 'org.apache.felix:org.apache.felix.main:4.0.2'
         }
-        project.task('launchpad', type: LauncherTask)
+        project.task('launchpad', type: LaunchpadTask)
         project.launchpad.dependsOn { 
           project.build
           project.subprojects.build

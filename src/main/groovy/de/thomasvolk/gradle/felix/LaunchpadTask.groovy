@@ -5,7 +5,7 @@ import org.gradle.api.tasks.TaskAction
 import java.io.FileWriter
 import java.io.File
 
-class LauncherTask extends DefaultTask {
+class LaunchpadTask extends DefaultTask {
 
     
     def bundleProjects(rootProject) {
