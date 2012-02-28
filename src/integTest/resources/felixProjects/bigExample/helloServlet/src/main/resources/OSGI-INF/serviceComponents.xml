@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<components xmlns:scr="http://www.osgi.org/xmlns/scr/v1.0.0">
+<scr:component enabled="true" immediate="true"
+               name="de.thomasvolk.felix.helloservlet.HelloServlet">
+    <implementation class="de.thomasvolk.felix.helloservlet.HelloServlet"/>
+    <property name="service.pid" value="de.thomasvolk.felix.helloservlet.HelloServlet"/>
+    <property name="alias" value="/" />
+    <service>
+        <provide interface="javax.servlet.http.HttpServlet"/>
+    </service>
+    <reference name="helloService" interface="de.thomasvolk.felix.helloservice.HelloService"
+               cardinality="1..1" policy="static"
+               bind="bindHelloService" unbind="unbindHelloService"/>
+</scr:component>
+</components>
