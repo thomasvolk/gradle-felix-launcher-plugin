@@ -19,11 +19,7 @@ dependencies {
   felix 'org.apache.felix:org.apache.felix.log:1.0.1'
   //http
   felix 'org.apache.felix:org.apache.felix.http.jetty:2.2.0'
-  felix 'org.apache.felix:org.apache.felix.ipojo.handler.whiteboard:1.6.0'
-  felix 'org.apache.felix:org.apache.felix.http.bridge:2.2.0'
-  felix 'org.apache.felix:org.apache.felix.http.bundle:2.2.0'
-  felix 'org.apache.felix:org.apache.felix.http.proxy:2.2.0'
-  felix 'org.apache.felix:org.apache.felix.ipojo:1.8.0'
+  felix 'org.apache.felix:org.apache.felix.http.whiteboard:2.2.0'
   //felix webconsole
   felix 'org.apache.felix:org.apache.felix.webconsole:3.1.8'
   //scala
