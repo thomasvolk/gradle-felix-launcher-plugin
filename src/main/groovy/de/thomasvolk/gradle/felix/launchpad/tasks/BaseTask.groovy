@@ -1,8 +1,8 @@
-package de.thomasvolk.gradle.felix
+package de.thomasvolk.gradle.felix.launchpad.tasks
 
 import org.gradle.api.DefaultTask
 
-class BaseFelixTask extends DefaultTask {
+class BaseTask extends DefaultTask {
 
     def String getTargetDir() {
         return "${project.buildDir}/launchpad"

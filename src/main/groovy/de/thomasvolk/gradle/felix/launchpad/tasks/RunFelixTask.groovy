@@ -1,8 +1,8 @@
-package de.thomasvolk.gradle.felix
+package de.thomasvolk.gradle.felix.launchpad.tasks
 
 import org.gradle.api.tasks.TaskAction
 
-class RunFelixTask extends BaseFelixTask {
+class RunFelixTask extends BaseTask {
 
     @TaskAction
     def run() {

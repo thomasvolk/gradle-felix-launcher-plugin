@@ -9,7 +9,7 @@ buildscript {
     }
 }
 
-apply plugin: 'felix'
+apply plugin: 'felix-launchpad'
 
 subprojects {
     apply plugin: 'osgi'

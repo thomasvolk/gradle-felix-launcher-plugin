@@ -1,12 +1,15 @@
-package de.thomasvolk.gradle.felix
+package de.thomasvolk.gradle.felix.launchpad.tasks
 
-import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.TaskAction
-import java.io.FileWriter
-import java.io.File
 import org.gradle.api.artifacts.Dependency
 
-class LaunchpadTask extends BaseFelixTask {
+
+class LaunchpadTask extends BaseTask {
+    final String CONFIG_TEMPLATE = """felix.log.level=1
+felix.auto.deploy.action=install,start,update
+org.osgi.service.http.port=8080
+obr.repository.url=http://felix.apache.org/obr/releases.xml
+"""
 
     def String jar(Dependency dep) {
         return "${dep.name}-${dep.version}.jar"
@@ -41,7 +44,7 @@ class LaunchpadTask extends BaseFelixTask {
         confDir = "$targetDir/conf"
         new File(confDir).mkdirs()
         new File("$confDir/config.properties").withWriter { w ->
-          w.write(Felix.CONFIG_TEMPLATE)
+          w.write(CONFIG_TEMPLATE)
         }
         copySubprojects(project, bundleDir)
     }
