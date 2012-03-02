@@ -1,7 +1,7 @@
-package de.thomasvolk.gradle.felix.launchpad
+package de.thomasvolk.gradle.plugins.felix.launchpad
 
-import de.thomasvolk.gradle.felix.launchpad.tasks.LaunchpadTask
-import de.thomasvolk.gradle.felix.launchpad.tasks.RunFelixTask
+import de.thomasvolk.gradle.plugins.felix.launchpad.tasks.LaunchpadTask
+import de.thomasvolk.gradle.plugins.felix.launchpad.tasks.RunFelixTask
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.plugins.JavaPlugin

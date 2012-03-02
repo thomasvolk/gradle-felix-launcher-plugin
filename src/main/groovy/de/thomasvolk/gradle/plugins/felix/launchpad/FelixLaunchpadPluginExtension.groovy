@@ -1,4 +1,4 @@
-package de.thomasvolk.gradle.felix.launchpad
+package de.thomasvolk.gradle.plugins.felix.launchpad
 
 class FelixLaunchpadPluginExtension {
     int logLevel = 1

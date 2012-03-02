@@ -1,4 +1,4 @@
-package de.thomasvolk.gradle.felix.launchpad.tasks
+package de.thomasvolk.gradle.plugins.felix.launchpad.tasks
 
 import org.gradle.api.tasks.TaskAction
 
