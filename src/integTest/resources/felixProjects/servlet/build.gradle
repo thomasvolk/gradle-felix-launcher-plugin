@@ -1,0 +1,57 @@
+buildscript {
+    repositories {
+        maven {
+            url '../../../../../build/repo'
+        }
+    }
+    dependencies {
+        classpath group: 'de.thomasvolk.gradle', name: 'felixLaunchpad', version: '1.0-SNAPSHOT'
+    }
+}
+
+apply plugin: 'felix-launchpad'
+
+felixLaunchpad {
+    logLevel = 2
+    httpPort = 8080
+}
+
+dependencies {
+  //base
+  felix 'org.apache.felix:org.apache.felix.eventadmin:1.2.14'
+  felix 'org.apache.felix:org.apache.felix.configadmin:1.2.8'
+  felix 'org.apache.felix:org.apache.felix.scr:1.6.0'
+  felix 'org.apache.felix:org.apache.felix.log:1.0.1'
+  //http
+  felix 'org.apache.felix:org.apache.felix.http.jetty:2.2.0'
+  felix 'org.apache.felix:org.apache.felix.http.whiteboard:2.2.0'
+  //felix webconsole
+  felix 'org.apache.felix:org.apache.felix.webconsole:3.1.8'
+  //scala
+  felix 'com.weiglewilczek.scala-lang-osgi:scala-library:2.9.1'
+}
+
+subprojects {
+    apply plugin: 'osgi'
+    apply plugin: 'scala'
+
+    group = 'de.thomasvolk'
+    version = '1.0-SNAPSHOT'
+    sourceCompatibility = 1.6
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    dependencies {
+        scalaTools 'org.scala-lang:scala-compiler:2.9.0'
+        scalaTools 'org.scala-lang:scala-library:2.9.0'
+
+        scalaTools 'org.scala-tools.testing:specs_2.9.0-1:1.6.8'
+        scalaTools 'org.scalatest:scalatest:1.2'
+
+        compile 'org.osgi:org.osgi.core:4.2.0'
+        compile 'org.scala-lang:scala-library:2.9.0'
+    }
+}

@@ -1,0 +1,16 @@
+
+jar {
+    manifest {
+        instruction 'Bundle-Activator', 'de.thomasvolk.felix.helloservlet.Activator'
+        instruction 'Import-Package', '*'
+        instruction 'Export-Package', '*'
+        instruction 'Service-Component', 'OSGI-INF/serviceComponents.xml'
+        attributes( 'Built-By': gradle.gradleVersion, 'Bundle-Name': name, 'Bundle-Version': version )
+    }
+}
+
+dependencies {
+    scalaTools 'javax.servlet:servlet-api:2.3'
+    compile 'javax.servlet:servlet-api:2.3'
+    compile project(":helloService")
+}
