@@ -9,7 +9,7 @@ import org.gradle.api.plugins.JavaPlugin
 class FelixLaunchpadPlugin implements Plugin<Project> {
     void apply(Project project) {
         project.plugins.apply(JavaPlugin.class)
-    	project.extensions.felix = new FelixLaunchpadPluginExtension()
+    	project.extensions.felixLaunchpad = new FelixLaunchpadPluginExtension()
     	project.repositories {
            mavenLocal()
            mavenCentral()
@@ -19,7 +19,7 @@ class FelixLaunchpadPlugin implements Plugin<Project> {
           felixMain
         }
     	project.dependencies {      
-          felixMain 'org.apache.felix:org.apache.felix.main:4.0.2'
+          felixMain project.extensions.felixLaunchpad.mainArtifact
         }
         project.task('launchpad', type: LaunchpadTask)
         project.launchpad.dependsOn { 

@@ -5,10 +5,10 @@ import org.gradle.api.artifacts.Dependency
 
 
 class LaunchpadTask extends BaseTask {
-    final String CONFIG_TEMPLATE = """felix.log.level=1
-felix.auto.deploy.action=install,start,update
-org.osgi.service.http.port=8080
-obr.repository.url=http://felix.apache.org/obr/releases.xml
+    final String CONFIG_TEMPLATE = """felix.log.level=%d
+felix.auto.deploy.action=%s
+org.osgi.service.http.port=%d
+obr.repository.url=%s
 """
 
     def String jar(Dependency dep) {
@@ -44,7 +44,12 @@ obr.repository.url=http://felix.apache.org/obr/releases.xml
         confDir = "$targetDir/conf"
         new File(confDir).mkdirs()
         new File("$confDir/config.properties").withWriter { w ->
-          w.write(CONFIG_TEMPLATE)
+          w.write(String.format(CONFIG_TEMPLATE,
+                  project.extensions.felixLaunchpad.logLevel,
+                  project.extensions.felixLaunchpad.deployActions,
+                  project.extensions.felixLaunchpad.httpPort,
+                  project.extensions.felixLaunchpad.repositoryUrl
+          ))
         }
         copySubprojects(project, bundleDir)
     }
