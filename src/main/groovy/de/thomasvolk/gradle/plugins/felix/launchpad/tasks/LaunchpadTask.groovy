@@ -9,6 +9,7 @@ class LaunchpadTask extends BaseTask {
 felix.auto.deploy.action=%s
 org.osgi.service.http.port=%d
 obr.repository.url=%s
+%s
 """
 
     def String jar(Dependency dep) {
@@ -48,7 +49,8 @@ obr.repository.url=%s
                   project.extensions.felixLaunchpad.logLevel,
                   project.extensions.felixLaunchpad.deployActions,
                   project.extensions.felixLaunchpad.httpPort,
-                  project.extensions.felixLaunchpad.repositoryUrl
+                  project.extensions.felixLaunchpad.repositoryUrl,
+                  project.extensions.felixLaunchpad.propertiesString
           ))
         }
         copySubprojects(project, bundleDir)
