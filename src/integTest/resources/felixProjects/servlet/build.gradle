@@ -29,13 +29,18 @@ dependencies {
   felix 'org.apache.felix:org.apache.felix.http.whiteboard:2.2.0'
   //felix webconsole
   felix 'org.apache.felix:org.apache.felix.webconsole:3.1.8'
-  //scala
-  felix 'com.weiglewilczek.scala-lang-osgi:scala-library:2.9.1'
+  //extra dependencies
+  felix 'org.apache.commons:commons-lang3:3.1'
+
+  //gogo shell extensions
+  //felix 'org.apache.felix:org.apache.felix.gogo.command:0.12.0'
+  //felix 'org.apache.felix:org.apache.felix.gogo.runtime:0.10.0'
+  //felix 'org.apache.felix:org.apache.felix.gogo.shell:0.10.0'
 }
 
 subprojects {
     apply plugin: 'osgi'
-    apply plugin: 'scala'
+    apply plugin: 'java'
 
     group = 'de.thomasvolk'
     version = '1.0-SNAPSHOT'
@@ -47,13 +52,6 @@ subprojects {
     }
 
     dependencies {
-        scalaTools 'org.scala-lang:scala-compiler:2.9.0'
-        scalaTools 'org.scala-lang:scala-library:2.9.0'
-
-        scalaTools 'org.scala-tools.testing:specs_2.9.0-1:1.6.8'
-        scalaTools 'org.scalatest:scalatest:1.2'
-
         compile 'org.osgi:org.osgi.core:4.2.0'
-        compile 'org.scala-lang:scala-library:2.9.0'
     }
 }

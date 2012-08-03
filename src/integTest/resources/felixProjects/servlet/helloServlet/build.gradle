@@ -10,7 +10,6 @@ jar {
 }
 
 dependencies {
-    scalaTools 'javax.servlet:servlet-api:2.3'
     compile 'javax.servlet:servlet-api:2.3'
     compile project(":helloService")
 }
