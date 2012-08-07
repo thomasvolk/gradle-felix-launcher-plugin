@@ -62,7 +62,7 @@ To apply the plugin you have to add the plugindependenciy in your project buildf
 	        mavenLocal()
 	    }
 	    dependencies {
-	        classpath group: 'de.thomasvolk.gradle', name: 'felixLaunchpad', version: '1.0-SNAPSHOT'
+	        classpath group: 'de.thomasvolk.gradle', name: 'felixLaunchpad', version: '1.1.0'
 	    }
 	}
 
@@ -79,7 +79,7 @@ extension.
 	        mavenLocal()
 	    }
 	    dependencies {
-	        classpath group: 'de.thomasvolk.gradle', name: 'felixLaunchpad', version: '1.0-SNAPSHOT'
+	        classpath group: 'de.thomasvolk.gradle', name: 'felixLaunchpad', version: '1.1.0'
 	    }
 	}
 
