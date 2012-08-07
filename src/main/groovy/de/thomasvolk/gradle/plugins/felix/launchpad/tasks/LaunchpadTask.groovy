@@ -29,9 +29,9 @@ obr.repository.url=%s
 
     @TaskAction
     def build() {
-        bundles = project.configurations.felix.dependencies.collect { jar(it) }
-        felixMain = project.configurations.felixMain.dependencies.collect { jar(it) }
-        bundleDir = "$targetDir/bundle"
+        def bundles = project.configurations.felix.dependencies.collect { jar(it) }
+        def felixMain = project.configurations.felixMain.dependencies.collect { jar(it) }
+        def bundleDir = "$targetDir/bundle"
         project.configurations.felixMain.each {
             if(felixMain.contains(it.name)) {
                 ant.copy(file: it.path, tofile: felixMainJar)
@@ -42,7 +42,7 @@ obr.repository.url=%s
                 ant.copy(file: it.path, todir: bundleDir)
             }
         }
-        confDir = "$targetDir/conf"
+        def confDir = "$targetDir/conf"
         new File(confDir).mkdirs()
         new File("$confDir/config.properties").withWriter { w ->
           w.write(String.format(CONFIG_TEMPLATE,
