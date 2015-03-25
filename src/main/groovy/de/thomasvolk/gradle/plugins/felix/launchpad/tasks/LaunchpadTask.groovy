@@ -24,6 +24,10 @@ obr.repository.url=%s
         bundleProjects(rootProject).each { project ->
             ant.copy(file: "${project.name}/build/libs/${project.name}-${project.version}.jar",
                 todir: "$target")
+            project.configurations.runtime.each {
+                logger.info("Copying runtime dependency artifact: $it to target directory: $target")
+                ant.copy(file: "$it", todir: "$target")
+            }
         }
     }
 
